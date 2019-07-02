@@ -18,7 +18,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         facebook: '',
         linkedin: '',
         youtube: '',
-        instagram: '',
+        instagram: ''
     });
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -57,7 +57,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         instagram,
     } = formData;
 
-    const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -77,7 +77,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
             <small>* = required field</small>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
-                    <select name="status" value={status} onChange={(e) => onChange(e)}>
+                    <select name="status" value={status} onChange={e => onChange(e)}>
                         <option value="0">* Select Professional Status</option>
                         <option value="Developer">Developer</option>
                         <option value="Junior Developer">Junior Developer</option>
@@ -134,7 +134,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                     <button type="button" onClick={() => toggleSocialInputs(!displaySocialInputs)} className="btn btn-light">
                         Add Social Network Links
                     </button>
-                <span>Optional</span>
+                    <span>Optional</span>
                 </div>
 
                 {displaySocialInputs && (<Fragment>
