@@ -11,7 +11,9 @@ const PostItem = ({
     removeLike, 
     deletePost, 
     auth, 
-    post: { _id, text, name, user, avatar, likes, date, comments } }) => {
+    post: { _id, text, name, user, avatar, likes, date, comments },
+    showActions
+ }) => {
     return (
         <div>
             <div className="post bg-white p-1 my-1">
@@ -32,14 +34,15 @@ const PostItem = ({
                     <p className="post-date">
                         Posted on {<Moment format="YYYY/MM/DD">{date}</Moment>}
                     </p>
-                    <button onClick={e => addLike(_id)} type="button" className="btn btn-light">
+                    {showActions && <Fragment>
+                        <button onClick={e => addLike(_id)} type="button" className="btn btn-light">
                         <i className="fa fa-thumbs-up"></i>
                         <span> { likes.length > 0 && <span > {likes.length}</span>
                             }</span>
-                    </button>
-                    <button type="button" onClick={e => removeLike(_id)} className="btn btn-light">
-                        <i className="fa fa-thumbs-down"></i>
-                    </button>
+                        </button>
+                        <button type="button" onClick={e => removeLike(_id)} className="btn btn-light">
+                            <i className="fa fa-thumbs-down"></i>
+                        </button>
                         <Link to={`/posts/${_id}`} className="btn btn-primary">
                             Discussion { comments.length > 0 && (
                                 <span className='comment-count'> {comments.length}</span>
@@ -50,11 +53,18 @@ const PostItem = ({
                                 <i className="fa fa-times"></i>
                             </button>
                         )}
+                    </Fragment>}
+
+                    
                     
                 </div>
             </div>
         </div>
     );
+}
+
+PostItem.defaultProps = {
+    showActions: true
 }
 
 PostItem.propTypes = {
