@@ -7,7 +7,6 @@ import {
     GET_POST, 
     ADD_COMMENT, 
     REMOVE_COMMENT } from '../actions/types';
-import { stat } from 'fs';
 
 const initialState = {
     posts: [],
@@ -67,7 +66,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 post: {...state.post,
-                     comments: state.post.comments.filter(comment => comment._id === payload)},
+                    comments: state.post.comments.filter(comment => comment._id !== payload)},
                 loading: false
             };
     

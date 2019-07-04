@@ -206,7 +206,7 @@ export const deleteExperience = id => async dispatch => {
             payload: {msg: err.response.statusText, status: err.response.status}
         });
     }
-}
+};
 
 
 // Delete education
@@ -226,7 +226,7 @@ export const deleteEducation = id => async dispatch => {
             payload: {msg: err.response.statusText, status: err.response.status}
         });
     }
-}
+};
 
 // Delete account & profile
 export const deleteAccount = () => async dispatch => {
@@ -250,7 +250,5 @@ export const deleteAccount = () => async dispatch => {
                 payload: {msg: err.response.statusText, status: err.response.status}
             });
         }
-    }
-
-    
-}
+    };
+};
